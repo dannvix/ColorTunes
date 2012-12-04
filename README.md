@@ -13,7 +13,7 @@ Please visit [http://dannvix.github.com/ColorTunes](http://dannvix.github.com/Co
 
 Acknowledgements
 ----------------
-Million thanks to [Zhusee Zhang](http://twitter.com/zhusee2) for the [page design](http://github.com/zhusee2/coverTunes). Thank [Nick Rabinowitz](nrabinowitz) for his [JavaScript port](https://gist.github.com/1104622) of the MMCQ algorithm.
+Million thanks to [Zhusee Zhang](http://twitter.com/zhusee2) for the [page design](http://github.com/zhusee2/coverTunes). Thank [Nick Rabinowitz](http://github.com/nrabinowitz) for his [JavaScript port](https://gist.github.com/1104622) of the MMCQ algorithm.
 
 
 License
