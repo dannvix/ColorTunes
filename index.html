@@ -6,9 +6,10 @@
   <link rel="stylesheet" href="stylesheets/styles.css" type="text/css" />
   <link rel="stylesheet" href="stylesheets/gh-fork-ribbon.css" type="text/css" />
   <script src="javascripts/jquery-1.8.3.min.js" defer></script>
-  <script src="javascripts/application.js" defer></script>
-  <script src="javascripts/color-tunes.js" defer></script>
+  <script src="javascripts/track_info.js" defer></script>
   <script src="javascripts/quantize.js" defer></script>
+  <script src="javascripts/color-tunes.js" defer></script>
+  <script src="javascripts/application.js" defer></script>
 </head>
 <body>
   <div class="github-fork-ribbon-wrapper right">
@@ -59,7 +60,7 @@
         </ul>
       </div>
       <div class="album-cover pull-right">
-        <canvas id="album-artwork"></canvas>
+        <canvas id="album-artwork" width="300" height="450"></canvas>
       </div>
       <div class="album-info">
         <h3 class="album-title">4 TIMES</h3>
@@ -68,7 +69,7 @@
           <li>Shuffle</li>
           <li>Options</li>
         </ul>
-        <h4 class="album-artist">Koda Kumi <span class="released-on">(2011)</span></h4>
+        <h4 class="album-artist"><span class="artist-name">Koda Kumi</span> <span class="released-on">(2011)</span></h4>
         <ol class="album-tracks">
           <li>
             <h5 class="track-title">Introduction ~sunny time~</h5>

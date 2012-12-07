@@ -8,9 +8,31 @@ $(document).ready(function() {
     coverAnchor = this;
     coverSelected = coverAnchor.parentNode;
     coverActive = $(".cover-picker .active");
-    albumSelected = coverAnchor.href.replace("#", "");
+    albumSelected = coverAnchor.href.split('#')[1];
     indicatorPosition = coverSelected.offsetLeft + (coverSelected.offsetWidth / 2) - 15;
     playlistHeight = $(".playlist-inner")[0].getBoundingClientRect().height;
+    function loadAlbumInfo(album) {
+      var selectedAlbum = TRACK_INFO[album];
+      $('.album-tracks').empty();
+      for(var i = 0; i < selectedAlbum.tracks.length; i++) {
+        var track = selectedAlbum.tracks[i],
+            trackListItem = $('<li>'),
+            trackTitleItem = $('<h5>').addClass('track-title').text(track.title),
+            trackRatingsItem = $('<span>').addClass('track-ratings'),
+            trackPlaytimeItem = $('<span>').addClass('track-playtime').text(track.playtime);
+        trackListItem.append(trackTitleItem).append(trackRatingsItem).append(trackPlaytimeItem);
+        trackListItem.appendTo('.album-tracks'); 
+      }
+      $('.album-title').text(selectedAlbum.title);
+      $('.album-artist .artist-name').text(selectedAlbum.artist);
+      $('.album-artist .released-on').text("(" + selectedAlbum.release + ")");
+      (function launchColorTunesLibrary() {
+        var canvas = $('#album-artwork')[0],
+            image = new Image();
+        image.src = selectedAlbum.cover;
+        ColorTunes.launch(image, canvas);
+      })();
+    };
     togglePlaylistForAlbum = function(album) {
       var isExpanding, targetHeight;
       isExpanding = $(".playlist").hasClass("closed");
@@ -27,11 +49,13 @@ $(document).ready(function() {
       $(coverSelected).toggleClass("active");
       return $(".playlist").toggleClass("closed expanded").height(targetHeight);
     };
+    
     switchPlaylistToAlbum = function(album) {
       $(coverActive).removeClass("active");
       $(coverSelected).addClass("active");
       return $(".playlist-indicator").css("left", indicatorPosition);
     };
+    loadAlbumInfo(albumSelected);
     if (($(coverActive).length === 0) || (coverSelected === coverActive[0])) {
       togglePlaylistForAlbum(albumSelected);
     } else if ($(coverActive).length > 0) {
@@ -39,9 +63,5 @@ $(document).ready(function() {
     }
     coverAnchor.blur();
     event.preventDefault();
-    canvas = document.getElementById("album-artwork");
-    image = new Image;
-    image.src = coverAnchor.childNodes[0].src;
-    return ColorTunes.launch(image, canvas);
   });
 });
