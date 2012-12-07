@@ -173,10 +173,10 @@ ColorTunes = (function() {
       rgbToCssString = function(color) {
         return "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")";
       };
-      $(".playlist").css("color", "" + (rgbToCssString(fgColor2)));
-      $(".track-title").css("color", "" + (rgbToCssString(fgColor)));
       $(".playlist").css("background-color", "" + (rgbToCssString(bgColor)));
-      return $(".playlist-indicator").css("border-bottom-color", "" + (rgbToCssString(bgColor)));
+      $(".playlist-indicator").css("border-bottom-color", "" + (rgbToCssString(bgColor)));
+      $(".album-title, .track-title").css("color", "" + (rgbToCssString(fgColor)));
+      return $(".album-artist, .album-tracks").css("color", "" + (rgbToCssString(fgColor2)));
     });
   };
 
