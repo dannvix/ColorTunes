@@ -6172,6 +6172,9 @@ a.label:hover, a.badge:hover {
 .playlist.expanded {
   height: auto;
 }
+.playlist, .playlist-inner {
+  min-width: 940px;
+}
 
 /* line 108, ../sass/styles.scss */
 .playlist-options {
@@ -6227,9 +6230,11 @@ a.label:hover, a.badge:hover {
 }
 /* line 137, ../sass/styles.scss */
 .album-tracks li {
+  width: 100%;
   line-height: 1.6;
   list-style: none;
   counter-increment: track;
+  display: inline-block;
 }
 /* line 142, ../sass/styles.scss */
 .album-tracks li::before {
@@ -6240,17 +6245,19 @@ a.label:hover, a.badge:hover {
   margin-right: 0.8em;
   float: left;
 }
-/* line 150, ../sass/styles.scss */
-.album-tracks li > * {
-  display: inline;
-}
+
 /* line 154, ../sass/styles.scss */
 .album-tracks .track-title {
   color: #ccc;
   font-weight: normal;
+  margin: 0 60px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* line 158, ../sass/styles.scss */
 .album-tracks .track-playtime {
+  margin-top: -1.6em;
   float: right;
 }
 
@@ -6268,4 +6275,24 @@ h1 a:hover {
   margin-top: 25px;
   color: #91989f;
   text-align: center;
+}
+
+
+@media screen and (max-width: 940px) {
+  .album-tracks {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    -ms-column-count: 1;
+    -o-column-count: 1;
+    column-count: 1;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .album-tracks {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    -ms-column-count: 3;
+    -o-column-count: 3;
+    column-count: 3;
+  }
 }
