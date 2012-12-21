@@ -144,17 +144,17 @@ var TRACK_INFO = {
       subtitle: '#757575'
     },
     tracks: [
-      {title: 'The New YearThe New Year', playtime: '4:06'},
-      {title: 'LightnessLightness', playtime: '3:30'},
-      {title: 'Title and RegistrationTitle and Registration', playtime: '3:39'},
+      {title: 'The New Year', playtime: '4:06'},
+      {title: 'Lightness', playtime: '3:30'},
+      {title: 'Title and Registration', playtime: '3:39'},
       {title: 'Expo \'86', playtime: '4:11'},
-      {title: 'The Sound of SettlingThe Sound of Settling', playtime: '2:12'},
-      {title: 'Tiny VesselsTiny Vessels', playtime: '4:21'},
-      {title: 'TransatlanticismTransatlanticism', playtime: '7:55'},
-      {title: 'Passenger SeatPassenger Seat', playtime: '3:41'},
-      {title: 'Death of an Interior DecoratorDeath of an Interior Decorator', playtime: '2:56'},
-      {title: 'We Looked Like GiantsWe Looked Like Giants', playtime: '5:32'},
-      {title: 'A Lack of ColorA Lack of Color', playtime: '3:35'}
+      {title: 'The Sound of Settling', playtime: '2:12'},
+      {title: 'Tiny Vessels', playtime: '4:21'},
+      {title: 'Transatlanticism', playtime: '7:55'},
+      {title: 'Passenger Seat', playtime: '3:41'},
+      {title: 'Death of an Interior Decorator', playtime: '2:56'},
+      {title: 'We Looked Like Giants', playtime: '5:32'},
+      {title: 'A Lack of Color', playtime: '3:35'}
     ]
   }
 }
