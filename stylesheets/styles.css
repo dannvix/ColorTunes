@@ -6139,14 +6139,16 @@ a.label:hover, a.badge:hover {
 }
 
 /* line 78, ../sass/styles.scss */
-.playlist-indicator {
+.playlist-indicator,
+.playlist-indicator::before {
   width: 0;
   height: 0;
   display: block;
   position: absolute;
   border: 16px solid transparent;
-  border-left-width: 15px;
-  border-right-width: 14px;
+}
+
+.playlist-indicator {
   border-bottom-color: #000;
   bottom: -1px;
   left: 70px;
@@ -6154,6 +6156,15 @@ a.label:hover, a.badge:hover {
   -moz-transition-property: left;
   -o-transition-property: left;
   transition-property: left;
+}
+
+.playlist-indicator::before {
+  content: '';
+  border-width: 17.41421px;
+  border-bottom-color: black;
+  top: -18.82843px;
+  left: -17.41421px;
+  z-index: -1;
 }
 
 /* line 94, ../sass/styles.scss */
