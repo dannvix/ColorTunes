@@ -23,7 +23,7 @@ class PriorityQueue
     @sorted = false
   sort: ->
     @contents.sort @comparator
-    @sotred = true
+    @sorted = true
   push: (obj) ->
     @contents.push obj
     @sorted = false
