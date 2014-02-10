@@ -4,7 +4,7 @@
 # Basic CoffeeScript port of the (MMCQ) Modified Media Cut Quantization
 # algorithm from the Leptonica library (http://www.leptonica.com/).
 # Return a color map you can use to map original pixels to the reduced palette.
-# 
+#
 # Rewritten from the JavaScript port (http://gist.github.com/1104622)
 # developed by Nick Rabinowitz under the MIT license.
 
@@ -23,7 +23,7 @@ class PriorityQueue
     @sorted = false
   sort: ->
     @contents.sort @comparator
-    @sotred = true
+    @sorted = true
   push: (obj) ->
     @contents.push obj
     @sorted = false
@@ -94,8 +94,8 @@ class MMCQ
     contains: (pixel) ->
       r = (pixel[0] >> MMCQ.rshift); g = (pixel[1] >> MMCQ.rshift); b = (pixel[2] >> MMCQ.rshift)
       ((@r1 <= r <= @r2) and (@g1 <= g <= @g2) and (@b1 <= b <= @b2))
- 
-     
+
+
   class ColorMap
     constructor: ->
       @cboxes = new PriorityQueue (a, b) ->
@@ -150,7 +150,7 @@ class MMCQ
     new ColorBox rmin, rmax, gmin, gmax, bmin, bmax, histo
 
   # private method
-  medianCutApply = (histo, cbox) -> 
+  medianCutApply = (histo, cbox) ->
     return unless cbox.count()
     return [cbox.copy()] if cbox.count() is 1
 
@@ -158,7 +158,7 @@ class MMCQ
     gw = (cbox.g2 - cbox.g1 + 1)
     bw = (cbox.b2 - cbox.b1 + 1)
     maxw = Math.max rw, gw, bw
-  
+
     total = 0; partialsum = []; lookaheadsum = []
     if maxw is rw
       for r in [(cbox.r1)..(cbox.r2)] by 1
@@ -178,7 +178,7 @@ class MMCQ
             sum += (histo[index] or 0)
         total += sum
         partialsum[g] = total
-    else # maxw is bw    
+    else # maxw is bw
       for b in [(cbox.b1)..(cbox.b2)] by 1
         sum = 0
         for r in [(cbox.r1)..(cbox.r2)] by 1
@@ -224,7 +224,7 @@ class MMCQ
     # get the beginning cbox from the colors
     histo = getHisto pixels
     cbox = cboxFromPixels pixels, histo
-    pq = new PriorityQueue (a, b) -> 
+    pq = new PriorityQueue (a, b) ->
       va = a.count(); vb = b.count()
       if va > vb then 1 else if va < vb then (-1) else 0
     pq.push cbox
@@ -244,7 +244,7 @@ class MMCQ
         cbox1 = cboxes[0]; cbox2 = cboxes[1]
         unless cbox1
           console.log "cbox1 not defined; shouldn't happen"
-          return;
+          return
         lh.push cbox1
         if cbox2 # cbox2 can be null
           lh.push cbox2
@@ -262,12 +262,12 @@ class MMCQ
         va = (a.count() * a.volume()); vb = (b.count() * b.volume())
         if va > vb then 1 else if va < vb then (-1) else 0
     pq2.push pq.pop() while pq.size()
-    
+
     # next set - generate the median cuts using the (npix * vol) sorting
     iter pq2, (maxcolors - pq2.size())
 
     # calculate the actual colors
     cmap = new ColorMap
     cmap.push pq2.pop() while pq2.size()
-    
+
     cmap
